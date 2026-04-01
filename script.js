@@ -28,10 +28,18 @@ function setupSiteConfig() {
   const whatsappMessage = encodeURIComponent("Hola, me interesa el catálogo de BIG SALE MODAS.");
   const whatsappLink = `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${whatsappMessage}`;
 
-  document.getElementById("heroWhatsApp").href = whatsappLink;
-  document.getElementById("footerWhatsApp").href = whatsappLink;
-  document.getElementById("heroWhatsApp").target = "_blank";
-  document.getElementById("footerWhatsApp").target = "_blank";
+  const heroBtn = document.getElementById("heroWhatsApp");
+  const footerBtn = document.getElementById("footerWhatsApp");
+
+  if (heroBtn) {
+    heroBtn.href = whatsappLink;
+    heroBtn.target = "_blank";
+  }
+
+  if (footerBtn) {
+    footerBtn.href = whatsappLink;
+    footerBtn.target = "_blank";
+  }
 }
 
 function getCurrentVariant(product) {
@@ -56,6 +64,7 @@ function createProductCard(product) {
   const brlPrice = Number(product.price_brl).toFixed(2);
   const stockClass = product.stock <= 0 ? "out" : product.stock <= 10 ? "low" : "in";
   const stockLabel = product.stock <= 0 ? "Agotado" : `Stock: ${product.stock}`;
+
   const waMessage = encodeURIComponent(
     `Hola, me interesa este producto: ${product.code} - ${product.title} - Color: ${variant.color}`
   );
@@ -109,8 +118,22 @@ function createProductCard(product) {
         </div>
 
         <div class="view-switch">
-          <button class="switch-btn ${currentView === "front" ? "active" : ""}" data-action="view" data-product-code="${product.code}" data-view="front">Vista frontal</button>
-          <button class="switch-btn ${currentView === "model" ? "active" : ""}" data-action="view" data-product-code="${product.code}" data-view="model">En modelo</button>
+          <button
+            class="switch-btn ${currentView === "front" ? "active" : ""}"
+            data-action="view"
+            data-product-code="${product.code}"
+            data-view="front"
+          >
+            Vista frontal
+          </button>
+          <button
+            class="switch-btn ${currentView === "model" ? "active" : ""}"
+            data-action="view"
+            data-product-code="${product.code}"
+            data-view="model"
+          >
+            En modelo
+          </button>
         </div>
 
         <div class="colors">${variantDots}</div>
@@ -200,4 +223,3 @@ fetch("products.json")
   .catch(error => {
     console.error("Error loading products:", error);
   });
-  
