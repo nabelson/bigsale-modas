@@ -2,7 +2,18 @@ const SITE_CONFIG = {
   brandName: "BIG SALE MODAS",
   logoText: "BS",
   logoImage: "",
-  whatsappNumber: "5545999591406"
+
+  whatsapp1: {
+    number: "5545999591406",
+    label: "WhatsApp 1"
+  },
+
+  whatsapp2: {
+    number: "5545998032085",
+    label: "WhatsApp 2"
+  },
+
+  instagram: "https://instagram.com/bigsalemodas"
 };
 
 let PRODUCTS = [];
@@ -18,27 +29,49 @@ const searchInput = document.getElementById("searchInput");
 const filterButtons = document.querySelectorAll(".filter-btn");
 
 function setupSiteConfig() {
-  document.getElementById("brandName").textContent = SITE_CONFIG.brandName;
-  document.getElementById("brandMark").textContent = SITE_CONFIG.logoText || "BS";
+  const brandNameEl = document.getElementById("brandName");
+  const brandMarkEl = document.getElementById("brandMark");
+  const footerWhatsApp1El = document.getElementById("footerWhatsApp1");
+  const footerWhatsApp2El = document.getElementById("footerWhatsApp2");
+  const instagramLinkEl = document.getElementById("instagramLink");
 
-  if (SITE_CONFIG.logoImage) {
-    document.getElementById("brandMark").innerHTML = `<img src="${SITE_CONFIG.logoImage}" alt="${SITE_CONFIG.brandName} logo">`;
+  if (brandNameEl) {
+    brandNameEl.textContent = SITE_CONFIG.brandName;
   }
 
-  const whatsappMessage = encodeURIComponent("Hola, me interesa el catálogo de BIG SALE MODAS.");
-  const whatsappLink = `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${whatsappMessage}`;
+  if (brandMarkEl) {
+    brandMarkEl.textContent = SITE_CONFIG.logoText || "BS";
 
-  const heroBtn = document.getElementById("heroWhatsApp");
-  const footerBtn = document.getElementById("footerWhatsApp");
-
-  if (heroBtn) {
-    heroBtn.href = whatsappLink;
-    heroBtn.target = "_blank";
+    if (SITE_CONFIG.logoImage) {
+      brandMarkEl.innerHTML = `<img src="${SITE_CONFIG.logoImage}" alt="${SITE_CONFIG.brandName} logo">`;
+    }
   }
 
-  if (footerBtn) {
-    footerBtn.href = whatsappLink;
-    footerBtn.target = "_blank";
+  const message = encodeURIComponent(
+    "Hola, me interesa el catálogo de BIG SALE MODAS."
+  );
+
+  const wa1 = `https://wa.me/${SITE_CONFIG.whatsapp1.number}?text=${message}`;
+  const wa2 = `https://wa.me/${SITE_CONFIG.whatsapp2.number}?text=${message}`;
+
+  if (footerWhatsApp1El) {
+    footerWhatsApp1El.href = wa1;
+    footerWhatsApp1El.target = "_blank";
+    footerWhatsApp1El.rel = "noreferrer";
+    footerWhatsApp1El.textContent = SITE_CONFIG.whatsapp1.label;
+  }
+
+  if (footerWhatsApp2El) {
+    footerWhatsApp2El.href = wa2;
+    footerWhatsApp2El.target = "_blank";
+    footerWhatsApp2El.rel = "noreferrer";
+    footerWhatsApp2El.textContent = SITE_CONFIG.whatsapp2.label;
+  }
+
+  if (instagramLinkEl) {
+    instagramLinkEl.href = SITE_CONFIG.instagram;
+    instagramLinkEl.target = "_blank";
+    instagramLinkEl.rel = "noreferrer";
   }
 }
 
@@ -68,7 +101,9 @@ function createProductCard(product) {
   const waMessage = encodeURIComponent(
     `Hola, me interesa este producto: ${product.code} - ${product.title} - Color: ${variant.color}`
   );
-  const waLink = `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${waMessage}`;
+
+  const wa1 = `https://wa.me/${SITE_CONFIG.whatsapp1.number}?text=${waMessage}`;
+  const wa2 = `https://wa.me/${SITE_CONFIG.whatsapp2.number}?text=${waMessage}`;
 
   const variantDots = product.variants.map((item, index) => `
     <button
@@ -141,7 +176,23 @@ function createProductCard(product) {
         <div class="product-footer">
           <div class="color-name">Color: <strong>${variant.color}</strong></div>
           <div class="contact-actions">
-            <a class="mini-btn" href="${waLink}" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a
+              class="mini-btn"
+              href="${wa1}"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ${SITE_CONFIG.whatsapp1.label}
+            </a>
+
+            <a
+              class="mini-btn"
+              href="${wa2}"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ${SITE_CONFIG.whatsapp2.label}
+            </a>
           </div>
         </div>
       </div>
