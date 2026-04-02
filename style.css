@@ -96,7 +96,8 @@ input {
 .brand-mark img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 6px;
 }
 
 .brand-meta small,
@@ -283,13 +284,13 @@ input {
   color: #fff;
 }
 
-.badge.stock.out {
-  background: rgba(182, 66, 66, 0.9);
+.badge.stock.low {
+  background: #d4a017;
   color: #fff;
 }
 
-.badge.stock.low {
-  background: #d4a017;
+.badge.stock.out {
+  background: rgba(182, 66, 66, 0.9);
   color: #fff;
 }
 
@@ -735,4 +736,63 @@ footer {
     font-size: 11px !important;
     border-radius: 10px !important;
   }
+}
+
+#backToTop {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+  z-index: 100;
+}
+
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.loading-message {
+  padding: 24px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.product-card.low-stock {
+  border: 1px solid rgba(212, 160, 23, 0.55);
+  box-shadow: 0 10px 30px rgba(212, 160, 23, 0.12);
+}
+
+.stock-note {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.stock-note.low {
+  color: #b58500;
+}
+
+.stock-note.out {
+  color: #b64242;
+}
+
+.product-card.out-of-stock {
+  opacity: 0.72;
+  border: 1px solid rgba(182, 66, 66, 0.35);
+}
+
+.product-card.out-of-stock .product-media img {
+  filter: grayscale(35%);
 }
