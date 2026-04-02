@@ -796,3 +796,49 @@ footer {
 .product-card.out-of-stock .product-media img {
   filter: grayscale(35%);
 }
+.media-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.72);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.media-nav:hover {
+  background: rgba(17, 17, 17, 0.9);
+}
+
+.media-nav-left {
+  left: 10px;
+}
+
+.media-nav-right {
+  right: 10px;
+}
+
+@media (max-width: 560px) {
+  .media-nav {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+
+  .media-nav-left {
+    left: 8px;
+  }
+
+  .media-nav-right {
+    right: 8px;
+  }
+}
