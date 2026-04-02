@@ -5,7 +5,7 @@ const SITE_CONFIG = {
 
   whatsapp1: {
     number: "5545999591406",
-    label: "WhatsApp 1"
+    label: "WhatsApp"
   },
 
   whatsapp2: {
@@ -182,19 +182,10 @@ function createProductCard(product) {
               class="mini-btn"
               href="${wa1}"
               target="_blank"
-              rel="noreferrer"
             >
-              ${SITE_CONFIG.whatsapp1.label}
+              WhatsApp
             </a>
 
-            <a
-              class="mini-btn"
-              href="${wa2}"
-              target="_blank"
-              rel="noreferrer"
-            >
-              ${SITE_CONFIG.whatsapp2.label}
-            </a>
           </div>
         </div>
       </div>
