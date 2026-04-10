@@ -103,7 +103,6 @@ function createProductCard(product) {
   const image = getCurrentImage(product);
   const currentView = getCurrentView(product);
   const usdPrice = Number(product.price_usd).toFixed(2);
-  const brlPrice = Number(product.price_brl).toFixed(2);
   const stockClass = product.stock <= 0 ? "out" : product.stock <= 10 ? "low" : "in";
   const stockLabel = product.stock <= 0 ? "Agotado" : `Stock: ${product.stock}`;
   const stockNote = product.stock <= 0
@@ -175,7 +174,6 @@ function createProductCard(product) {
 
         <div class="product-prices">
           <div><strong>USD:</strong> ${usdPrice}</div>
-          <div><strong>BRL:</strong> ${brlPrice}</div>
         </div>
 
         <div class="product-meta">
