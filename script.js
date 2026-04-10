@@ -5,7 +5,7 @@ const SITE_CONFIG = {
 
   whatsapp1: {
     number: "5545999591406",
-    label: "WhatsApp"
+    label: "WhatsApp 1"
   },
 
   whatsapp2: {
@@ -13,7 +13,9 @@ const SITE_CONFIG = {
     label: "WhatsApp 2"
   },
 
-  instagram: "https://instagram.com/bigsalemodas"
+  instagram: "https://instagram.com/bigsalemodas",
+
+  tiktok: "https://www.tiktok.com/@bigsale.mayorista"
 };
 
 let PRODUCTS = [];
@@ -34,6 +36,7 @@ function setupSiteConfig() {
   const footerWhatsApp1El = document.getElementById("footerWhatsApp1");
   const footerWhatsApp2El = document.getElementById("footerWhatsApp2");
   const instagramLinkEl = document.getElementById("instagramLink");
+  const tiktokLinkEl = document.getElementById("tiktokLink");
 
   if (brandNameEl) {
     brandNameEl.textContent = SITE_CONFIG.brandName;
@@ -72,6 +75,12 @@ function setupSiteConfig() {
     instagramLinkEl.href = SITE_CONFIG.instagram;
     instagramLinkEl.target = "_blank";
     instagramLinkEl.rel = "noreferrer";
+  }
+
+  if (tiktokLinkEl) {
+    tiktokLinkEl.href = SITE_CONFIG.tiktok;
+    tiktokLinkEl.target = "_blank";
+    tiktokLinkEl.rel = "noreferrer";
   }
 }
 
